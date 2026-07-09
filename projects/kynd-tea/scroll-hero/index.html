@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kynd Tea Blends — Be Kynd | Scroll Story</title>
+<meta name="description" content="Whole botanicals, no dust. Scroll to watch the Kynd Tea collection settle into place — functional wellness in every cup." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,560;1,9..144,380&family=Hanken+Grotesk:wght@360;420;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#2E4034;          /* deep eucalyptus green — primary text          */
+    --ink-soft:#5E6F61;     /* muted green-grey — secondary text             */
+    --jade-deep:#5F7D64;    /* deeper sage — eyebrows + links                */
+    --amber:#C4867F;        /* dusty blush — primary accent                  */
+    --amber-soft:#E3B7B0;   /* soft blush                                    */
+    --porcelain:#F6EFE3;    /* warm cream — main light background            */
+    --porcelain-2:#ECE0CE;  /* deeper warm beige                             */
+    --blush-band:#F1E4DE;   /* blush band                                    */
+    --sage:#CBD6C6;         /* muted light green                             */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:auto}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    color:var(--ink);
+    /* clean gradient backdrop: warm cream → blush → whisper of sage */
+    background:
+      radial-gradient(120% 90% at 82% 8%,  rgba(227,183,176,.55) 0%, rgba(227,183,176,0) 55%),
+      radial-gradient(110% 80% at 12% 96%, rgba(203,214,198,.6)  0%, rgba(203,214,198,0) 58%),
+      linear-gradient(168deg, #FBF6EC 0%, var(--porcelain) 38%, var(--blush-band) 72%, var(--porcelain-2) 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--amber-soft);color:var(--ink)}
+
+  /* ---- scroll track: gives the page its scrub length ---- */
+  #track{height:620vh;position:relative}
+
+  /* ---- fixed stage ---- */
+  #stage{position:fixed;inset:0;overflow:hidden}
+  #stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+  /* ---- steep progress bar ---- */
+  #steep{position:fixed;top:0;left:0;height:3px;width:0%;z-index:40;
+    background:linear-gradient(90deg,var(--amber),var(--amber-soft));
+    border-radius:0 3px 3px 0;transition:none}
+
+  /* ---- hero copy ---- */
+  .hero{
+    position:fixed;z-index:20;inset:0;display:flex;flex-direction:column;
+    justify-content:center;align-items:flex-start;
+    padding:0 min(8vw,7.5rem);pointer-events:none;
+  }
+  .hero .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--jade-deep);margin-bottom:1.4rem;
+    display:flex;align-items:center;gap:.9rem;
+  }
+  .hero .eyebrow::before{content:"";width:2.4rem;height:1px;background:var(--amber);display:inline-block}
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:420;
+    font-size:clamp(2.6rem,7.2vw,5.6rem);line-height:1.04;letter-spacing:-.015em;
+    max-width:11ch;
+  }
+  .hero h1 em{font-style:italic;font-weight:380;color:var(--amber)}
+  .hero p{
+    margin-top:1.6rem;font-size:clamp(1rem,1.4vw,1.15rem);font-weight:420;
+    line-height:1.65;color:var(--ink-soft);max-width:34ch;
+  }
+  .hero .cue{
+    margin-top:2.6rem;display:flex;align-items:center;gap:.8rem;
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--ink-soft);
+  }
+  .cue .line{width:1px;height:2.6rem;background:linear-gradient(var(--ink) 0%,transparent 100%);position:relative;overflow:hidden}
+  .cue .line::after{content:"";position:absolute;left:0;top:-100%;width:100%;height:100%;
+    background:linear-gradient(var(--amber) 0%,transparent 100%);animation:drip 2.2s ease-in-out infinite}
+  @keyframes drip{0%{top:-100%}60%{top:100%}100%{top:100%}}
+
+  /* ---- closing overlay ---- */
+  .outro{
+    position:fixed;z-index:20;inset:0;display:flex;flex-direction:column;
+    justify-content:flex-end;align-items:center;text-align:center;
+    padding:0 8vw 9vh;pointer-events:none;opacity:0;
+  }
+  .outro::before{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:44vh;z-index:-1;
+    background:linear-gradient(180deg,rgba(246,239,227,0) 0%,rgba(246,239,227,.55) 45%,rgba(246,239,227,.85) 100%);
+  }
+  .outro .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--jade-deep);margin-bottom:1rem;
+  }
+  .outro h2{font-family:'Fraunces',serif;font-weight:420;font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.01em}
+  .outro h2 em{font-style:italic;color:var(--amber)}
+  .outro a{
+    pointer-events:auto;margin-top:1.8rem;display:inline-flex;align-items:center;gap:.6rem;
+    font-weight:600;font-size:.95rem;letter-spacing:.02em;text-decoration:none;
+    color:var(--porcelain);background:var(--ink);padding:1rem 2.1rem;border-radius:999px;
+    transition:background .25s ease,transform .25s ease;
+  }
+  .outro a:hover{background:var(--amber);transform:translateY(-2px)}
+  .outro a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+  /* ---- wordmark + loader ---- */
+  .brand{
+    position:fixed;top:2rem;left:min(8vw,7.5rem);z-index:30;
+    font-family:'Fraunces',serif;font-weight:560;font-size:1.25rem;letter-spacing:.22em;
+  }
+  .brand span{display:block;font-family:'JetBrains Mono',monospace;font-weight:400;
+    font-size:.55rem;letter-spacing:.5em;color:var(--jade-deep);margin-top:.15rem}
+  #loader{
+    position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;gap:1.2rem;
+    align-items:center;justify-content:center;background:var(--porcelain);
+    transition:opacity .6s ease;font-family:'JetBrains Mono',monospace;
+    font-size:.7rem;letter-spacing:.3em;color:var(--ink-soft);text-transform:uppercase;
+  }
+  #loader .bar{width:min(38vw,240px);height:2px;background:var(--porcelain-2);border-radius:2px;overflow:hidden}
+  #loader .bar i{display:block;height:100%;width:0%;background:var(--amber);transition:width .2s ease}
+  #loader.done{opacity:0;pointer-events:none}
+
+  #chip{
+    position:fixed;bottom:1.4rem;left:1.4rem;z-index:30;
+    font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--ink-soft);
+    background:rgba(246,239,227,.72);backdrop-filter:blur(6px);
+    padding:.5rem .9rem;border-radius:999px;border:1px solid rgba(46,64,52,.1);
+    opacity:0;transition:opacity .4s ease;
+  }
+  #chip.show{opacity:1}
+
+  @media (max-width:640px){
+    .hero{align-items:flex-start;justify-content:flex-end;padding-bottom:16vh}
+    .hero p{max-width:28ch}
+    .brand{left:6vw}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cue .line::after{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="loader" role="status" aria-live="polite">
+  <div>Steeping the experience</div>
+  <div class="bar"><i id="loadbar"></i></div>
+</div>
+
+<div id="steep" aria-hidden="true"></div>
+
+<header class="brand">KYND<span>TEA BLENDS</span></header>
+
+<div id="stage" aria-hidden="true"></div>
+
+<section class="hero" id="hero">
+  <div class="eyebrow">Functional wellness · Whole botanicals, no dust</div>
+  <h1>Be <em>Kynd</em><br />to your body.</h1>
+  <p>Loose-leaf blends for gut health, glow, immunity and calm — watch the collection settle in as you scroll.</p>
+  <div class="cue"><div class="line"></div>Scroll to steep</div>
+</section>
+
+<div class="outro" id="outro">
+  <div class="eyebrow">The collection, settled</div>
+  <h2>Wellness in <em>every</em> cup.</h2>
+  <a href="https://kyndtea.com" target="_blank" rel="noopener">Shop the blends</a>
+</div>
+
+<div id="chip">Loading frames <span id="chippct">0%</span></div>
+
+<div id="track"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- config ---------------- */
+  var FRAME_COUNT = 150;
+  var FRAME_PATH  = function(i){ return 'frames/frame_' + String(i + 1).padStart(3, '0') + '.jpg'; };
+  var IMG_ASPECT  = 1280 / 720;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- dom ---------------- */
+  var stage   = document.getElementById('stage');
+  var loader  = document.getElementById('loader');
+  var loadbar = document.getElementById('loadbar');
+  var chip    = document.getElementById('chip');
+  var chippct = document.getElementById('chippct');
+  var steep   = document.getElementById('steep');
+  var hero    = document.getElementById('hero');
+  var outro   = document.getElementById('outro');
+
+  /* ---------------- three.js scene ---------------- */
+  var renderer, scene, camera, material, mesh;
+  var texA = null, texB = null;
+  var webglOK = true;
+
+  try {
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'high-performance' });
+  } catch (e) { webglOK = false; }
+
+  var ctx2d = null, canvas2d = null;
+  if (webglOK) {
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    stage.appendChild(renderer.domElement);
+
+    scene  = new THREE.Scene();
+    camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    /* cover-fit + soft edge melt into the page gradient + adjacent-frame blend */
+    material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthTest: false,
+      uniforms: {
+        uTexA:   { value: null },
+        uTexB:   { value: null },
+        uMix:    { value: 0 },
+        uRes:    { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+        uImgAsp: { value: IMG_ASPECT },
+        uReady:  { value: 0 }
+      },
+      vertexShader: [
+        'varying vec2 vUv;',
+        'void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }'
+      ].join('\n'),
+      fragmentShader: [
+        'precision highp float;',
+        'varying vec2 vUv;',
+        'uniform sampler2D uTexA;',
+        'uniform sampler2D uTexB;',
+        'uniform float uMix;',
+        'uniform vec2  uRes;',
+        'uniform float uImgAsp;',
+        'uniform float uReady;',
+        'void main(){',
+        '  float scrAsp = uRes.x / uRes.y;',
+        '  vec2 uv = vUv;',
+        // cover fit: crop whichever axis overflows
+        '  if (scrAsp > uImgAsp) {',
+        '    float s = uImgAsp / scrAsp;',
+        '    uv.y = uv.y * s + (1.0 - s) * 0.5;',
+        '  } else {',
+        '    float s = scrAsp / uImgAsp;',
+        '    uv.x = uv.x * s + (1.0 - s) * 0.5;',
+        '  }',
+        '  vec4 a = texture2D(uTexA, uv);',
+        '  vec4 b = texture2D(uTexB, uv);',
+        '  vec4 col = mix(a, b, uMix);',
+        // soft rectangular vignette: frame melts into the gradient behind it
+        '  vec2 d = min(vUv, 1.0 - vUv);',
+        '  float edge = smoothstep(0.0, 0.085, d.x) * smoothstep(0.0, 0.11, d.y);',
+        '  float alpha = mix(0.0, edge, uReady);',
+        '  gl_FragColor = vec4(col.rgb, alpha * 0.98);',
+        '}'
+      ].join('\n')
+    });
+
+    mesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material);
+    mesh.frustumCulled = false;
+    scene.add(mesh);
+  } else {
+    /* 2D canvas fallback — same scrub, no shader melt */
+    canvas2d = document.createElement('canvas');
+    stage.appendChild(canvas2d);
+    ctx2d = canvas2d.getContext('2d');
+  }
+
+  /* ---------------- frame loading ---------------- */
+  var images   = new Array(FRAME_COUNT);
+  var textures = new Array(FRAME_COUNT);
+  var loadedCount = 0;
+  var contiguous  = 0;   // highest index such that all frames [0..contiguous] are loaded
+
+  function onFrameLoaded(){
+    loadedCount++;
+    while (contiguous < FRAME_COUNT - 1 && images[contiguous + 1]) contiguous++;
+    var pct = Math.round(loadedCount / FRAME_COUNT * 100);
+    loadbar.style.width = pct + '%';
+    chippct.textContent = pct + '%';
+    if (images[0] && loader.className !== 'done') {
+      loader.className = 'done';
+      if (loadedCount < FRAME_COUNT) chip.className = 'show';
+    }
+    if (loadedCount === FRAME_COUNT) chip.className = '';
+  }
+
+  function loadFrame(i){
+    return new Promise(function(resolve){
+      var img = new Image();
+      img.onload = function(){
+        images[i] = img;
+        if (webglOK) {
+          var t = new THREE.Texture(img);
+          t.minFilter = THREE.LinearFilter;
+          t.magFilter = THREE.LinearFilter;
+          t.generateMipmaps = false;
+          t.needsUpdate = true;
+          textures[i] = t;
+        }
+        onFrameLoaded(); resolve();
+      };
+      img.onerror = function(){ images[i] = null; onFrameLoaded(); resolve(); };
+      img.src = FRAME_PATH(i);
+    });
+  }
+
+  /* frame 0 first (instant paint), then the rest with limited concurrency */
+  loadFrame(0).then(function(){
+    var next = 1, POOL = 10;
+    function pump(){
+      if (next >= FRAME_COUNT) return;
+      var i = next++;
+      loadFrame(i).then(pump);
+    }
+    for (var k = 0; k < POOL; k++) pump();
+  });
+
+  /* ---------------- scroll scrub ---------------- */
+  var target = 0, current = 0;
+
+  function readScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    target = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+  }
+  window.addEventListener('scroll', readScroll, { passive: true });
+  readScroll();
+
+  function setFrame(f){
+    var maxIdx = Math.max(0, contiguous);
+    f = Math.min(f, maxIdx);
+    var i0 = Math.floor(f);
+    var i1 = Math.min(i0 + 1, maxIdx);
+    var mixv = f - i0;
+
+    if (webglOK) {
+      var ta = textures[i0], tb = textures[i1];
+      if (!ta) return;
+      if (material.uniforms.uTexA.value !== ta) material.uniforms.uTexA.value = ta;
+      if (material.uniforms.uTexB.value !== (tb || ta)) material.uniforms.uTexB.value = tb || ta;
+      material.uniforms.uMix.value = tb ? mixv : 0;
+      material.uniforms.uReady.value = 1;
+    } else if (ctx2d && images[i0]) {
+      var cw = canvas2d.width, ch = canvas2d.height;
+      var img = images[Math.round(f)] || images[i0];
+      var s = Math.max(cw / img.width, ch / img.height);
+      var dw = img.width * s, dh = img.height * s;
+      ctx2d.clearRect(0, 0, cw, ch);
+      ctx2d.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    }
+  }
+
+  /* ---------------- overlays ---------------- */
+  function updateOverlays(p){
+    steep.style.width = (p * 100) + '%';
+
+    /* hero fades + drifts out across the first 18% of scroll */
+    var h = Math.min(1, p / 0.18);
+    hero.style.opacity   = String(1 - h);
+    hero.style.transform = 'translateY(' + (-h * 6) + 'vh)';
+    hero.style.visibility = h >= 1 ? 'hidden' : 'visible';
+
+    /* outro eases in over the last 12% */
+    var o = Math.min(1, Math.max(0, (p - 0.88) / 0.12));
+    var eased = o * o * (3 - 2 * o);
+    outro.style.opacity   = String(eased);
+    outro.style.transform = 'translateY(' + ((1 - eased) * 4) + 'vh)';
+  }
+
+  /* ---------------- resize ---------------- */
+  function resize(){
+    var w = window.innerWidth, h = window.innerHeight;
+    if (webglOK) {
+      renderer.setSize(w, h);
+      material.uniforms.uRes.value.set(w, h);
+    } else if (canvas2d) {
+      canvas2d.width = w; canvas2d.height = h;
+    }
+    readScroll();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  /* ---------------- render loop ---------------- */
+  var running = true;
+  document.addEventListener('visibilitychange', function(){
+    running = !document.hidden;
+    if (running) requestAnimationFrame(tick);
+  });
+
+  function tick(){
+    if (!running) return;
+    /* smooth the scrub; reduced-motion users get a direct 1:1 mapping */
+    current += (target - current) * (reduceMotion ? 1 : 0.11);
+    if (Math.abs(target - current) < 0.0004) current = target;
+
+    setFrame(current * (FRAME_COUNT - 1));
+    updateOverlays(current);
+
+    if (webglOK) renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

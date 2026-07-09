@@ -71,3 +71,4 @@ Full premium single-file site built in the confirmed beige/blush/green palette. 
 
 - `kynd-tea.html` — the site (open in any browser)
 - `docs/brand-brief.md` — full brand + product reference (read before editing content/data)
+- `scroll-hero/` — standalone scroll-driven hero experience (Three.js r128). Scrubs a 150-frame sequence (extracted from `scroll-hero/kynd-hero-fallin-10s-1080p60.mp4` at 1280×720) forward on scroll down, backward on scroll up, with adjacent-frame blending in a shader, soft edge melt into a cream/blush/sage gradient, hero headline, and a closing CTA to kyndtea.com. Serve the folder over HTTP (e.g. `python3 -m http.server`) — frames won't load from `file://`. Regenerate frames: `ffmpeg -i kynd-hero-fallin-10s-1080p60.mp4 -vf "select=not(mod(n\,4)),scale=1280:720" -vsync vfr -q:v 4 frames/frame_%03d.jpg`.
