@@ -37,7 +37,10 @@ self-contained with no external requests.
 - **Contact details** (phone (416) 710-6130, email
   zebiheatingandcooling@gmail.com, hours Mon–Sat 9am–9pm / Sun closed,
   Visa/Mastercard/Amex/Discover accepted, "your final stop for comfort"
-  tagline) were taken from Zebi's current Wix site.
+  tagline) were taken from Zebi's current Wix site. The offers section
+  ($99 A/C tune-up, $500 off new system installation, free service call
+  with any repair), 24/7 emergency service and "all makes & models"
+  messaging come from the company's newer site design (zebihvac.com).
 - **Quote form:** opens the visitor's email app pre-addressed to
   zebiheatingandcooling@gmail.com. For silent submissions, wire it to a form
   backend (Formspree, Netlify Forms, etc.) instead.

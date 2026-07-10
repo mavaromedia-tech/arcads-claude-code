@@ -140,6 +140,11 @@ h1 em, h2 em { font-style: italic; color: var(--ice); }
 .nav-links a {
   color: inherit; text-decoration: none; font-weight: 600; font-size: 0.9rem;
   opacity: 0.9; transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+@media (max-width: 1360px) {
+  .nav-links { gap: 1.05rem; }
+  .nav-links a { font-size: 0.85rem; }
 }
 .nav-links a:hover { opacity: 1; }
 .nav-cta { padding: 0.6rem 1.3rem; font-size: 0.85rem; }
@@ -258,7 +263,7 @@ h1 em, h2 em { font-style: italic; color: var(--ice); }
   position: relative; z-index: 2;
 }
 .trust-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;
   text-align: center;
 }
 .trust-item strong {
@@ -320,6 +325,33 @@ h1 em, h2 em { font-style: italic; color: var(--ice); }
 @media (max-width: 960px) { .cards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
 
+/* ---------- Offers ---------- */
+.offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.offer {
+  background: var(--white);
+  border: 2px dashed var(--ice);
+  border-radius: var(--radius);
+  padding: 2rem 1.7rem 1.6rem;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.offer:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+.offer-featured { border-color: var(--flame); background: var(--flame-soft); }
+.offer-price {
+  font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+  font-weight: 900; font-style: italic; line-height: 1;
+  color: var(--petrol); letter-spacing: -0.02em;
+}
+.offer-price sup { font-size: 0.45em; vertical-align: super; }
+.offer-price span { font-size: 0.4em; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; }
+.offer-featured .offer-price { color: var(--flame); }
+.offer h3 { font-size: 1.15rem; }
+.offer p { color: var(--ink-soft); font-size: 0.93rem; max-width: 30ch; }
+.offer .btn { margin-top: 0.5rem; }
+.offer small { color: var(--ink-soft); font-size: 0.72rem; opacity: 0.85; }
+@media (max-width: 880px) { .offers-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Why list ---------- */
 .why-list { display: grid; gap: 1.3rem; margin-top: 1.5rem; }
 .why-item { border-left: 3px solid var(--ice); padding-left: 1.1rem; }
@@ -365,6 +397,11 @@ h1 em, h2 em { font-style: italic; color: var(--ice); }
 }
 .band-copy h2 { margin-bottom: 0.5rem; }
 .band-copy p { opacity: 0.85; max-width: 52ch; }
+.band-micro {
+  margin-top: 0.7rem; font-size: 0.8rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--ice);
+  opacity: 1 !important;
+}
 
 /* ---------- Reviews ---------- */
 .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
