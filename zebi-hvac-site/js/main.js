@@ -265,9 +265,16 @@ form.addEventListener('submit', (e) => {
     formStatus.style.color = 'var(--flame)';
     return;
   }
+  const service = form.elements.service.value;
+  const details = form.elements.details.value.trim();
+  const subject = encodeURIComponent(`Quote request — ${service}`);
+  const body = encodeURIComponent(
+    `Name: ${name}\nReach me at: ${contact}\nService: ${service}\n\n${details}`
+  );
+  window.location.href =
+    `mailto:zebiheatingandcooling@gmail.com?subject=${subject}&body=${body}`;
   formStatus.style.color = 'var(--ice)';
-  formStatus.textContent = `Thanks, ${name}! Your request is noted — we'll get back to you shortly.`;
-  form.reset();
+  formStatus.textContent = `Thanks, ${name}! Opening your email app — or call us at (416) 710-6130.`;
 });
 
 /* ---------- Footer year ---------- */

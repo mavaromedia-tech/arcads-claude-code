@@ -34,17 +34,17 @@ self-contained with no external requests.
 
 ## Content notes / TODO before going live
 
-- **Phone & email:** Zebi's phone number and email are not published in any
-  source we could access, so the contact section links to their
-  [Facebook page](https://www.facebook.com/heatingandairconditionandrefrigeration/)
-  and uses a demo quote form. Add the real `tel:` / `mailto:` links in
-  `index.html` (`#contact` section and nav CTA) before launch.
-- **Quote form:** front-end demo only — wire it to a form backend
-  (Formspree, Netlify Forms, etc.) or a `mailto:`.
+- **Contact details** (phone (416) 710-6130, email
+  zebiheatingandcooling@gmail.com, hours Mon–Sat 9am–9pm / Sun closed,
+  Visa/Mastercard/Amex/Discover accepted, "your final stop for comfort"
+  tagline) were taken from Zebi's current Wix site.
+- **Quote form:** opens the visitor's email app pre-addressed to
+  zebiheatingandcooling@gmail.com. For silent submissions, wire it to a form
+  backend (Formspree, Netlify Forms, etc.) instead.
 - **Testimonials:** illustrative placeholders written from the company's
   positioning ("satisfaction is our #1 priority"); replace with real reviews
   from their Facebook recommendations.
-- Verified facts used throughout: Mississauga base, serving the GTA,
+- Other verified facts used throughout: Mississauga base, serving the GTA,
   operating since 2000, fully licensed / insured / T.S.S.A. registered,
   heating + cooling + refrigeration services.
 
