@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aziz The Jeweller — Custom Pieces, Bridal &amp; Gold | Toronto &amp; Dubai</title>
+  <meta name="description" content="Aziz The Jeweller — Toronto & Dubai jeweler. Custom iced-out pieces, engagement rings, chains, grillz and cash for gold. Text GOLD to 249-733-2400." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">Aziz</div>
+      <div class="loader-sub">THE JEWELLER</div>
+      <div class="loader-bar"><div class="loader-bar-fill" id="loader-fill"></div></div>
+      <div class="loader-pct" id="loader-pct">0%</div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <div class="nav-logo">Aziz<span> · The Jeweller</span></div>
+    <div class="nav-links">
+      <a href="#story">Story</a>
+      <a href="#vault">Work</a>
+      <a href="#collection">Collection</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="sms:+12497332400&amp;body=GOLD">Text “GOLD”</a>
+  </nav>
+
+  <!-- ============ 3D SCROLL HERO ============ -->
+  <section id="scroll-stage">
+    <div class="sticky-wrap">
+      <canvas id="webgl"></canvas>
+      <div class="hero-vignette"></div>
+
+      <!-- Hero copy (progress 0) -->
+      <div class="hero-copy" id="hero-copy">
+        <p class="hero-kicker">TORONTO &nbsp;·&nbsp; DUBAI</p>
+        <h1>Ice That<br /><em>Falls Different.</em></h1>
+        <p class="hero-sub">Custom pieces, bridal diamonds &amp; gold — built by Aziz, worn by the culture.</p>
+        <div class="hero-scroll-hint">
+          <span></span>
+          SCROLL
+        </div>
+      </div>
+
+      <!-- Milestone captions during the scrub -->
+      <div class="milestone" id="ms-1">
+        <h3>Custom Iced-Out Pendants</h3>
+        <p>Your name. Your logo. Fully paved, gothic-cut, made from scratch.</p>
+      </div>
+      <div class="milestone" id="ms-2">
+        <h3>Bridal by Aziz</h3>
+        <p>Marquise, oval, solitaire — engagement rings that shut the room down.</p>
+      </div>
+      <div class="milestone" id="ms-3">
+        <h3>Every Piece Lands Perfect</h3>
+        <p>Designed, cast and set with obsessive detail. Toronto to Dubai.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section class="section" id="story">
+    <div class="container split">
+      <div>
+        <p class="kicker">THE JEWELLER</p>
+        <h2>From Toronto<br />to Dubai —<br /><em>gold runs in the family.</em></h2>
+      </div>
+      <div class="story-text">
+        <p>
+          Aziz The Jeweller is a Toronto-area jeweler and gold buyer crafting custom pieces
+          for clients across two continents. From fully iced-out name pendants for recording
+          artists to timeless bridal diamonds under the <strong>@bridalbyaziz</strong> line,
+          every piece is designed and finished to order.
+        </p>
+        <p>
+          Buying gold, building customs, sourcing stones — one text away.
+          No middlemen, no mall markup. Just the jeweller.
+        </p>
+        <div class="stats">
+          <div class="stat"><span class="stat-num">2</span><span class="stat-label">Cities — Toronto &amp; Dubai</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Custom, made to order</span></div>
+          <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Text “GOLD” for inquiries</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE VAULT — showcase of real pieces ============ -->
+  <section id="vault" aria-labelledby="vault-title">
+    <div class="vault-sticky">
+      <header class="vault-head container">
+        <div>
+          <p class="kicker">FROM THE BENCH</p>
+          <h2 id="vault-title">The <em>Vault</em></h2>
+        </div>
+        <p class="vault-intro">Real pieces from Aziz’s bench, shot before they left the shop. Select any piece for a closer look.</p>
+      </header>
+
+      <div class="vault-track" id="vault-track">
+        <figure class="piece" style="--r: 0.8014">
+          <button class="piece-frame" type="button" aria-label="Open The Kraken A pendant">
+            <img src="images/work/kraken-a-pendant.webp" width="1162" height="1450" decoding="async"
+                 alt="Rose gold letter A pendant paved in diamonds, wrapped in barbed wire with diamond-set octopus tentacles" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Custom pendant · Rose gold</span>
+            <h3>The Kraken “A”</h3>
+            <p>A fully iced initial wrapped in hand-formed barbed wire, with diamond-paved tentacles curling off every side.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.7251">
+          <button class="piece-frame" type="button" aria-label="Open The Baguette Block ring">
+            <img src="images/work/baguette-signet-ring.webp" width="989" height="1364" decoding="async"
+                 alt="Yellow gold statement ring with a grid of baguette diamonds framed in pavé" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Statement ring · Yellow gold</span>
+            <h3>The Baguette Block</h3>
+            <p>A wall of baguettes framed in pavé, with baguette-stacked shoulders. Built to be seen from across the room.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.6959">
+          <button class="piece-frame" type="button" aria-label="Open The Tennis Chain">
+            <img src="images/work/tennis-chain.webp" width="1016" height="1460" decoding="async"
+                 alt="Diamond tennis chain displayed on a black velvet neck form" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Chain · Diamond tennis</span>
+            <h3>The Tennis Chain</h3>
+            <p>One unbroken line of round brilliants, set stone to stone from clasp to clasp.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 1.1765">
+          <button class="piece-frame" type="button" aria-label="Open the Emerald Cut Solitaire">
+            <img src="images/work/emerald-cut-solitaire.webp" width="1500" height="1275" decoding="async"
+                 alt="Emerald cut diamond solitaire on a thin yellow gold band, held in a white glove" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Bridal · Yellow gold</span>
+            <h3>Emerald Cut Solitaire</h3>
+            <p>A step-cut emerald held in white-gold claws on a whisper-thin yellow-gold band.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.8388">
+          <button class="piece-frame" type="button" aria-label="Open the Oval Solitaire">
+            <img src="images/work/oval-solitaire.webp" width="1015" height="1210" decoding="async"
+                 alt="Oval diamond solitaire on a yellow gold band, held in a black glove" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Bridal · Yellow gold</span>
+            <h3>Oval Solitaire</h3>
+            <p>A brilliant oval on a slim four-claw setting — clean, low and all about the stone.</p>
+          </figcaption>
+        </figure>
+
+        <div class="vault-end">
+          <p class="kicker">NEXT ON THE BENCH</p>
+          <h3>Your piece<br /><em>goes here.</em></h3>
+          <p>Send a sketch, a screenshot or just the idea. Aziz takes it from there.</p>
+          <a class="nav-cta" href="sms:+12497332400&amp;body=GOLD">Text “GOLD” to start</a>
+        </div>
+      </div>
+
+      <div class="vault-progress container" aria-hidden="true">
+        <span class="vault-count"><span id="vault-current">1</span> / 5</span>
+        <div class="vault-bar"><div class="vault-bar-fill" id="vault-fill"></div></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Close-up viewer for The Vault -->
+  <dialog class="lightbox" id="lightbox" aria-label="Piece close-up">
+    <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous piece">&#8249;</button>
+    <figure class="lb-figure">
+      <img id="lb-img" src="" alt="" />
+      <figcaption>
+        <span class="piece-tag" id="lb-tag"></span>
+        <h3 id="lb-title"></h3>
+        <p id="lb-desc"></p>
+        <span class="lb-count" id="lb-count"></span>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Next piece">&#8250;</button>
+  </dialog>
+
+  <!-- ============ COLLECTION ============ -->
+  <section class="section" id="collection">
+    <div class="container">
+      <p class="kicker center">THE CATALOG</p>
+      <h2 class="center">What Aziz Builds</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">◆</div>
+          <h3>Custom Name Pendants</h3>
+          <p>Fully iced gothic-letter pieces — your name, brand or logo paved in stones, like the “on2louie” piece.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">💍</div>
+          <h3>Bridal &amp; Engagement</h3>
+          <p>Marquise, oval and solitaire rings in yellow, white and rose gold — the <a href="https://www.instagram.com/bridalbyaziz" target="_blank" rel="noopener">@bridalbyaziz</a> collection.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">⛓</div>
+          <h3>Chains &amp; Tennis</h3>
+          <p>Cuban links, rope chains and tennis sets — solid gold, sized and finished in-house.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">😁</div>
+          <h3>Custom Grillz</h3>
+          <p>Molded-to-you gold and diamond grillz, from single caps to full sets.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon">⌚</div>
+          <h3>Watches</h3>
+          <p>Timepieces sourced and customized — from statement pieces to daily wear.</p>
+        </article>
+        <article class="card gold">
+          <div class="card-icon">💰</div>
+          <h3>Cash 4 Gold</h3>
+          <p>Top-dollar gold buying, on the spot. Old jewelry, scrap, broken pieces — bring it in or text a photo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES / CLIENTELE ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="kicker center">WHY AZIZ</p>
+      <h2 class="center">Worn by Artists.<br /><em>Trusted by Families.</em></h2>
+      <div class="service-rows">
+        <div class="service-row">
+          <span class="service-num">01</span>
+          <div>
+            <h3>Rapper-Grade Customs</h3>
+            <p>Statement pieces built for stage lights — the same customs seen on recording artists across the GTA.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="service-num">02</span>
+          <div>
+            <h3>Design to Delivery</h3>
+            <p>Sketch, CAD render, casting, setting, polish — every step handled personally, with progress updates in your DMs.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="service-num">03</span>
+          <div>
+            <h3>Honest Gold Buying</h3>
+            <p>Transparent weighing and same-day cash for your gold. No games, no lowballs.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="service-num">04</span>
+          <div>
+            <h3>Two Markets, One Standard</h3>
+            <p>Toronto craftsmanship with direct Dubai gold-souk sourcing — better metal, better prices.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container contact-inner">
+      <p class="kicker center">GET A PIECE STARTED</p>
+      <h2 class="center">Text <em>“GOLD”</em> to Begin</h2>
+      <a class="phone" href="sms:+12497332400&amp;body=GOLD">249&#8209;733&#8209;2400</a>
+      <p class="contact-sub">All inquiries — customs, bridal, gold buying — start with one text.</p>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/azizthejeweller" target="_blank" rel="noopener">@azizthejeweller</a>
+        <span>·</span>
+        <a href="https://www.instagram.com/bridalbyaziz" target="_blank" rel="noopener">@bridalbyaziz</a>
+        <span>·</span>
+        <a href="https://maps.app.goo.gl/AFNqFqBSgsmttNEG8" target="_blank" rel="noopener">Find us on Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="nav-logo">Aziz<span> · The Jeweller</span></div>
+      <p>Toronto &amp; Dubai · Jewelry / Watches · Gold Buyer &amp; Custom Pieces</p>
+      <p class="fine">© 2026 Aziz The Jeweller. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./js/vendor/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
