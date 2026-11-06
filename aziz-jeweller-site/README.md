@@ -9,6 +9,15 @@ pendant, oval solitaire falling onto velvet podiums) was pre-extracted into
 reverses. The footage is rendered as a texture on a plane in a WebGL scene with
 gold-dust particles, fog, and mouse parallax.
 
+## The Vault (showcase gallery)
+
+A gallery of real pieces from Aziz's Instagram (`images/work/`). On desktop the
+section pins and vertical scrolling slides the pieces sideways, spotlighting one
+at a time; clicking a piece opens a full-screen close-up with arrow-key
+navigation. On phones and with reduced motion enabled it falls back to a plain
+stacked grid. To add a piece, copy a `<figure class="piece">` block in
+`index.html` and set `--r` to the photo's width ÷ height.
+
 ## Run it
 
 Any static server works (ES modules + image fetches need http, not file://):

@@ -27,6 +27,7 @@
     <div class="nav-logo">Aziz<span> · The Jeweller</span></div>
     <div class="nav-links">
       <a href="#story">Story</a>
+      <a href="#vault">Work</a>
       <a href="#collection">Collection</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
@@ -93,6 +94,110 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ THE VAULT — showcase of real pieces ============ -->
+  <section id="vault" aria-labelledby="vault-title">
+    <div class="vault-sticky">
+      <header class="vault-head container">
+        <div>
+          <p class="kicker">FROM THE BENCH</p>
+          <h2 id="vault-title">The <em>Vault</em></h2>
+        </div>
+        <p class="vault-intro">Real pieces from Aziz’s bench, shot before they left the shop. Select any piece for a closer look.</p>
+      </header>
+
+      <div class="vault-track" id="vault-track">
+        <figure class="piece" style="--r: 0.8014">
+          <button class="piece-frame" type="button" aria-label="Open The Kraken A pendant">
+            <img src="images/work/kraken-a-pendant.webp" width="1162" height="1450" decoding="async"
+                 alt="Rose gold letter A pendant paved in diamonds, wrapped in barbed wire with diamond-set octopus tentacles" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Custom pendant · Rose gold</span>
+            <h3>The Kraken “A”</h3>
+            <p>A fully iced initial wrapped in hand-formed barbed wire, with diamond-paved tentacles curling off every side.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.7251">
+          <button class="piece-frame" type="button" aria-label="Open The Baguette Block ring">
+            <img src="images/work/baguette-signet-ring.webp" width="989" height="1364" decoding="async"
+                 alt="Yellow gold statement ring with a grid of baguette diamonds framed in pavé" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Statement ring · Yellow gold</span>
+            <h3>The Baguette Block</h3>
+            <p>A wall of baguettes framed in pavé, with baguette-stacked shoulders. Built to be seen from across the room.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.6959">
+          <button class="piece-frame" type="button" aria-label="Open The Tennis Chain">
+            <img src="images/work/tennis-chain.webp" width="1016" height="1460" decoding="async"
+                 alt="Diamond tennis chain displayed on a black velvet neck form" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Chain · Diamond tennis</span>
+            <h3>The Tennis Chain</h3>
+            <p>One unbroken line of round brilliants, set stone to stone from clasp to clasp.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 1.1765">
+          <button class="piece-frame" type="button" aria-label="Open the Emerald Cut Solitaire">
+            <img src="images/work/emerald-cut-solitaire.webp" width="1500" height="1275" decoding="async"
+                 alt="Emerald cut diamond solitaire on a thin yellow gold band, held in a white glove" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Bridal · Yellow gold</span>
+            <h3>Emerald Cut Solitaire</h3>
+            <p>A step-cut emerald held in white-gold claws on a whisper-thin yellow-gold band.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="piece" style="--r: 0.8388">
+          <button class="piece-frame" type="button" aria-label="Open the Oval Solitaire">
+            <img src="images/work/oval-solitaire.webp" width="1015" height="1210" decoding="async"
+                 alt="Oval diamond solitaire on a yellow gold band, held in a black glove" />
+          </button>
+          <figcaption>
+            <span class="piece-tag">Bridal · Yellow gold</span>
+            <h3>Oval Solitaire</h3>
+            <p>A brilliant oval on a slim four-claw setting — clean, low and all about the stone.</p>
+          </figcaption>
+        </figure>
+
+        <div class="vault-end">
+          <p class="kicker">NEXT ON THE BENCH</p>
+          <h3>Your piece<br /><em>goes here.</em></h3>
+          <p>Send a sketch, a screenshot or just the idea. Aziz takes it from there.</p>
+          <a class="nav-cta" href="sms:+12497332400&amp;body=GOLD">Text “GOLD” to start</a>
+        </div>
+      </div>
+
+      <div class="vault-progress container" aria-hidden="true">
+        <span class="vault-count"><span id="vault-current">1</span> / 5</span>
+        <div class="vault-bar"><div class="vault-bar-fill" id="vault-fill"></div></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Close-up viewer for The Vault -->
+  <dialog class="lightbox" id="lightbox" aria-label="Piece close-up">
+    <button class="lb-btn lb-close" type="button" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" type="button" aria-label="Previous piece">&#8249;</button>
+    <figure class="lb-figure">
+      <img id="lb-img" src="" alt="" />
+      <figcaption>
+        <span class="piece-tag" id="lb-tag"></span>
+        <h3 id="lb-title"></h3>
+        <p id="lb-desc"></p>
+        <span class="lb-count" id="lb-count"></span>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-next" type="button" aria-label="Next piece">&#8250;</button>
+  </dialog>
 
   <!-- ============ COLLECTION ============ -->
   <section class="section" id="collection">

@@ -203,6 +203,103 @@ window.addEventListener("resize", () => {
   readScroll();
 });
 
+// ---------- The Vault: pinned horizontal showcase + close-up viewer ----------
+function initVault() {
+  const vault = document.getElementById("vault");
+  if (!vault) return;
+  const track = document.getElementById("vault-track");
+  const pieces = [...vault.querySelectorAll(".piece")];
+  const fill = document.getElementById("vault-fill");
+  const counter = document.getElementById("vault-current");
+  const pinQuery = window.matchMedia(
+    "(min-width: 900px) and (min-height: 560px) and (prefers-reduced-motion: no-preference)"
+  );
+  let distance = 0;
+  let queued = false;
+
+  function layout() {
+    const pinned = pinQuery.matches;
+    vault.classList.toggle("vault-pinned", pinned);
+    if (!pinned) {
+      vault.style.height = "";
+      track.style.transform = "";
+      pieces.forEach((el) => el.classList.remove("is-active"));
+      return;
+    }
+    distance = Math.max(0, track.scrollWidth - window.innerWidth);
+    vault.style.height = window.innerHeight + distance + "px";
+    update();
+  }
+
+  function update() {
+    queued = false;
+    if (!pinQuery.matches) return;
+    const runway = vault.offsetHeight - window.innerHeight;
+    const p = runway > 0
+      ? Math.min(1, Math.max(0, -vault.getBoundingClientRect().top / runway))
+      : 0;
+    track.style.transform = `translate3d(${(-p * distance).toFixed(1)}px, 0, 0)`;
+    fill.style.transform = `scaleX(${p})`;
+
+    // the spotlight travels from the first piece to the last as you scroll
+    const center = (el) => el.offsetLeft + el.offsetWidth / 2;
+    const focus = center(pieces[0]) + p * (center(pieces[pieces.length - 1]) - center(pieces[0]));
+    let active = 0;
+    pieces.forEach((el, i) => {
+      if (Math.abs(center(el) - focus) < Math.abs(center(pieces[active]) - focus)) active = i;
+    });
+    pieces.forEach((el, i) => el.classList.toggle("is-active", i === active));
+    counter.textContent = active + 1;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!queued) { queued = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  window.addEventListener("resize", layout);
+  window.addEventListener("load", layout);
+  pinQuery.addEventListener("change", layout);
+  layout();
+
+  // close-up viewer
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lb-img");
+  const lbTag = document.getElementById("lb-tag");
+  const lbTitle = document.getElementById("lb-title");
+  const lbDesc = document.getElementById("lb-desc");
+  const lbCount = document.getElementById("lb-count");
+  let current = 0;
+
+  function show(i) {
+    current = (i + pieces.length) % pieces.length;
+    const fig = pieces[current];
+    const img = fig.querySelector("img");
+    lbImg.src = img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    lbTag.textContent = fig.querySelector(".piece-tag").textContent;
+    lbTitle.textContent = fig.querySelector("h3").textContent;
+    lbDesc.textContent = fig.querySelector("figcaption p").textContent;
+    lbCount.textContent = `${current + 1} / ${pieces.length}`;
+  }
+
+  pieces.forEach((fig, i) => {
+    fig.querySelector(".piece-frame").addEventListener("click", () => {
+      show(i);
+      document.documentElement.classList.add("lb-open");
+      lb.showModal();
+    });
+  });
+  lb.querySelector(".lb-close").addEventListener("click", () => lb.close());
+  lb.querySelector(".lb-prev").addEventListener("click", () => show(current - 1));
+  lb.querySelector(".lb-next").addEventListener("click", () => show(current + 1));
+  lb.addEventListener("click", (e) => { if (e.target === lb) lb.close(); });
+  lb.addEventListener("close", () => document.documentElement.classList.remove("lb-open"));
+  lb.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(current - 1);
+    if (e.key === "ArrowRight") show(current + 1);
+  });
+}
+initVault();
+
 // ---------- Boot ----------
 preloadFrames().then(() => {
   drawFrame(0);
